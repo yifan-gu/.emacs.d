@@ -7,17 +7,15 @@
 (setq user-mail-address "gu_yifan@vobile.com")
 (defconst my-company "vobile")
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/emacs-goodies-el")
 (add-to-list 'load-path "~/.emacs.d/lisp")
-;(add-to-list 'load-path "~/.emacs.d/lisp/solarized-emacs-master")
 ;(load-theme 'solarized-dark)
 ; not to show GNU startup 
 ;(setq inhibit-startup-message t)
 ; show key seq fast
 (setq echo-keystrokes 0.1)
 ; show line number
-(setq column-number-mode t)
-(setq line-number-mode t)
+(add-hook 'find-file-hook (lambda () (linum-mode 1)))
+
 ; not asking yes or no, use y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 ; prevent rolling page jump too much, scroll-margin 3
@@ -29,11 +27,6 @@
 (tool-bar-mode nil)
 ; no scroll bar
 (set-scroll-bar-mode nil)
-; setcolor
-;(set-foreground-color "grey")
-;(set-background-color "black")
-;(set-cursor-color "gold1")
-;(set-mouse-color "gold1")
 
 (auto-image-file-mode t);image mode
 (show-paren-mode t);
@@ -43,21 +36,19 @@
 (defun toggle-fullscreen()
   (interactive)
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-			 '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+                         '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-			 '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+                         '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
   )
 (toggle-fullscreen)
 
-;(loop for x downfrom 40 to 1 do
-;      (setq tab-stop-list (cons (* x 4) tab-stop-list)))
-;
 ;color theme
+(add-to-list 'load-path "~/.emacs.d/lisp/color-theme-6.6.0")
 (require 'color-theme)
 (eval-after-load "color-theme"
-		 '(progn (color-theme-initialize) ;(color-theme-billw) 
-                 (color-theme-dark-laptop)
-            ))
+                 '(progn (color-theme-initialize) ;(color-theme-billw) 
+                         (color-theme-dark-laptop)
+                         ))
 ;font
 (set-default-font "Monospace-10")
 
@@ -69,15 +60,15 @@
 (setq tab-stop-list ())
 ;c indent
 (setq-default c-basic-offset 4
-	      tab-width 4
-	      indent-tabs-mode t)
+              tab-width 4
+              indent-tabs-mode t)
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
 
 ;python autoindent
 (add-hook 'python-mode-hook '(lambda ()
-                             (local-set-key (kbd "RET") 'newline-and-indent)))
+                               (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;autopair
 (require 'autopair)
@@ -114,7 +105,7 @@
                       (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
 ;;auto complete
-(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
+;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
 (add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
 (require 'auto-complete-config)
 (ac-config-default)
@@ -126,8 +117,40 @@
 ;(global-semantic-idle-completions-mode)
 ;
 ;set ssh as the tramp default method
-(setq tramp-default-method "ssh")
+;(setq tramp-default-method "ssh")
 
 ;bash-complete
 (require 'bash-completion)
 (bash-completion-setup)
+
+; Set transparency of emacs
+(defun transparency (value)
+  "Sets the transparency of the frame window. 0=transparent/100=opaque"
+  (interactive "nTransparency Value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
+
+;buffer-move: swap windows
+(require 'buffer-move)
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+;bind window move key
+(global-set-key (kbd "<C-up>") 'windmove-up)
+(global-set-key (kbd "<C-down>") 'windmove-down)
+(global-set-key (kbd "<C-right>") 'windmove-right)
+(global-set-key (kbd "<C-left>") 'windmove-left)
+
+;fringe background color black
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(fringe ((((class color) (background dark)) (:background "black")))))
