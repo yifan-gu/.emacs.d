@@ -127,3 +127,7 @@
 ;
 ;set ssh as the tramp default method
 (setq tramp-default-method "ssh")
+
+;bash-complete
+(require 'bash-completion)
+(bash-completion-setup)
