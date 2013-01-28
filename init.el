@@ -14,7 +14,7 @@
 ; show key seq fast
 (setq echo-keystrokes 0.1)
 ; show line number
-(add-hook 'find-file-hook (lambda () (linum-mode 1)))
+;(add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
 ; not asking yes or no, use y/n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -28,7 +28,7 @@
 ; no scroll bar
 (set-scroll-bar-mode nil)
 
-(auto-image-file-mode t);image mode
+;(auto-image-file-mode t);image mode
 (show-paren-mode t);
 (setq mouse-yank-at-point t); yank with middle key
 (setq x-selet-enable-clipboard t);emacs paste clip with other program
@@ -47,7 +47,7 @@
 (require 'color-theme)
 (eval-after-load "color-theme"
                  '(progn (color-theme-initialize) ;(color-theme-billw) 
-                         (color-theme-dark-laptop)
+                         (color-theme-tangotango)
                          ))
 ;font
 (set-default-font "Monospace-10")
@@ -141,7 +141,7 @@
 (global-set-key (kbd "<C-right>") 'windmove-right)
 (global-set-key (kbd "<C-left>") 'windmove-left)
 
-;fringe background color black
+;fringe background color black,
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -154,3 +154,5 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(fringe ((((class color) (background dark)) (:background "black")))))
+
+
