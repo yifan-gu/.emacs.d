@@ -155,4 +155,7 @@
   ;; If there is more than one, they won't work right.
  '(fringe ((((class color) (background dark)) (:background "black")))))
 
-
+;color for shell
+(setq ansi-color-names-vector
+        ["black" "#EF2929" "green" "#FCE94F" "#728FCF" "#AD7FA8" "#34E2E2" "white"])
+;default vector:["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
