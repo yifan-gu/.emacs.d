@@ -105,11 +105,11 @@
                       (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
 ;;auto complete
-;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
+(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
 (add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
 (require 'auto-complete-config)
-(ac-config-default)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
+;(ac-config-default)
 ;add ac-source-semantic to all buffer
 (defun ac-common-setup ()
   (setq ac-sources (append ac-sources '(ac-source-semantic-raw)))
@@ -131,31 +131,67 @@
 
 ;buffer-move: swap windows
 (require 'buffer-move)
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+(global-set-key (kbd "<M-S-up>")     'buf-move-up)
+(global-set-key (kbd "<M-S-down>")   'buf-move-down)
+(global-set-key (kbd "<M-S-left>")   'buf-move-left)
+(global-set-key (kbd "<M-S-right>")  'buf-move-right)
 ;bind window move key
-(global-set-key (kbd "<C-up>") 'windmove-up)
-(global-set-key (kbd "<C-down>") 'windmove-down)
-(global-set-key (kbd "<C-right>") 'windmove-right)
-(global-set-key (kbd "<C-left>") 'windmove-left)
+(global-set-key (kbd "<M-up>") 'windmove-up)
+(global-set-key (kbd "<M-down>") 'windmove-down)
+(global-set-key (kbd "<M-right>") 'windmove-right)
+(global-set-key (kbd "<M-left>") 'windmove-left)
 
-;fringe background color black,
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(fringe ((((class color) (background dark)) (:background "black")))))
+;;fringe background color black,
+;(custom-set-variables
+;  ;; custom-set-variables was added by Custom.
+;  ;; If you edit it by hand, you could mess it up, so be careful.
+;  ;; Your init file should contain only one such instance.
+;  ;; If there is more than one, they won't work right.
+; )
+;(custom-set-faces
+;  ;; custom-set-faces was added by Custom.
+;  ;; If you edit it by hand, you could mess it up, so be careful.
+;  ;; Your init file should contain only one such instance.
+;  ;; If there is more than one, they won't work right.
+; '(fringe ((((class color) (background dark)) (:background "black")))))
 
 ;color for shell
 (setq ansi-color-names-vector
         ["black" "#EF2929" "green" "#FCE94F" "#728FCF" "#AD7FA8" "#34E2E2" "white"])
 ;default vector:["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
+;
+;ibus for chinese input
+(require 'ibus)
+(add-hook 'after-init-hook 'ibus-mode-on)
+
+;; Behave like vi's o command
+(defun open-next-line (arg)
+  "Move to the next line and then opens a line.
+  See also `newline-and-indent'."
+  (interactive "p")
+  (end-of-line)
+  (open-line arg)
+  (next-line 1)
+  (when newline-and-indent
+    (indent-according-to-mode)))
+
+(global-set-key (kbd "C-o") 'open-next-line)
+
+;; Behave like vi's O command
+(defun open-previous-line (arg)
+  "Open a new line before the current one. 
+  See also `newline-and-indent'."
+  (interactive "p")
+  (beginning-of-line)
+  (open-line arg)
+  (when newline-and-indent
+    (indent-according-to-mode)))
+
+(global-set-key (kbd "M-o") 'open-previous-line)
+
+;; Autoindent open-*-lines
+(defvar newline-and-indent t
+  "Modify the behavior of the open-*-line functions to cause them to autoindent.")
+
+;compile keybinding
+(global-set-key (kbd "C-c l") 'compile)
