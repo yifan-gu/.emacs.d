@@ -51,6 +51,7 @@
                          ))
 ;font
 (set-default-font "Monospace-10")
+;(set-frame-font "Monaco-10")
 
 
 ; indent
@@ -71,8 +72,8 @@
                                (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;autopair
-(require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers
+;(require 'autopair)
+;(autopair-global-mode) ;; enable autopair in all buffers
 
 
 ;kill whole line biding
@@ -104,16 +105,6 @@
                                                    (semantic-current-tag))
                       (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
-;;auto complete
-(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
-(add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
-;(ac-config-default)
-;add ac-source-semantic to all buffer
-(defun ac-common-setup ()
-  (setq ac-sources (append ac-sources '(ac-source-semantic-raw)))
-  )
 ;(global-semantic-idle-completions-mode)
 ;
 ;set ssh as the tramp default method
@@ -157,7 +148,7 @@
 
 ;color for shell
 (setq ansi-color-names-vector
-        ["black" "#EF2929" "green" "#FCE94F" "#728FCF" "#AD7FA8" "#34E2E2" "white"])
+      ["black" "#EF2929" "green" "#FCE94F" "#728FCF" "#AD7FA8" "#34E2E2" "white"])
 ;default vector:["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
 ;
 ;ibus for chinese input
@@ -195,3 +186,38 @@
 
 ;compile keybinding
 (global-set-key (kbd "C-c l") 'compile)
+
+(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet-0.6.1c")
+(require 'yasnippet)
+;(yas-global-mode 1)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/lisp/yasnippet-0.6.1c/snippets")
+(setq yas/trigger-key (kbd "M-["))
+;
+;;;auto complete
+(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
+(add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
+(ac-config-default)
+(require 'ac-python)
+;add ac-source-semantic to all buffer
+;(defun ac-common-setup ()
+;  (setq ac-sources (append ac-sources '(ac-source-semantic-raw)))
+;  )
+(defun ac-common-setup ()
+  (setq ac-sources (append ac-sources '(ac-source-yasnippet)))
+  )
+
+(with-no-warnings
+;; >0.6.0
+(apply 'append (mapcar 'ac-yasnippet-candidate-1
+                       (yas/get-snippet-tables)))
+)
+;;shell autocomplete
+(add-to-list 'load-path "~/.emacs.d/lisp/readline-complete")
+(require 'readline-complete)
+
+(add-to-list 'ac-modes 'shell-mode)
+(add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
+
