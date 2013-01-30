@@ -22,7 +22,7 @@
 (setq scroll-margin 3
       scroll-conservatively 10000)
 ; no menu bar
-(menu-bar-mode nil)
+;(menu-bar-mode nil)
 ; no tool bar
 (tool-bar-mode nil)
 ; no scroll bar
@@ -79,7 +79,7 @@
 ;kill whole line biding
 ;(global-set-key (kbd "M-g") 'kill-whole-line)
 ;
-;CEDET
+;;CEDET
 (load-file "~/.emacs.d/lisp/cedet-1.1/common/cedet.el")
 (global-ede-mode 1)                      ; Enable the Project management system
 (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
@@ -106,7 +106,7 @@
                       (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
 ;(global-semantic-idle-completions-mode)
-;
+;;
 ;set ssh as the tramp default method
 ;(setq tramp-default-method "ssh")
 
@@ -195,12 +195,12 @@
 (setq yas/trigger-key (kbd "M-["))
 ;
 ;;;auto complete
-(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
+;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
 (add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
-(require 'ac-python)
+;(require 'ac-python)
 ;add ac-source-semantic to all buffer
 ;(defun ac-common-setup ()
 ;  (setq ac-sources (append ac-sources '(ac-source-semantic-raw)))
@@ -214,9 +214,9 @@
 (apply 'append (mapcar 'ac-yasnippet-candidate-1
                        (yas/get-snippet-tables)))
 )
-;;shell autocomplete
-;(add-to-list 'load-path "~/.emacs.d/lisp/readline-complete")
-;
+;shell autocomplete
+(add-to-list 'load-path "~/.emacs.d/lisp/readline-complete")
+
 (setq explicit-shell-file-name "bash")
 (setq explicit-bash-args '("-ct" "export EMACS=; stty echo; bash"))
 (setq comint-process-echoes t)
@@ -226,3 +226,31 @@
 (add-to-list 'ac-modes 'shell-mode)
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;;FUN Functions---------------------------------------------------------
+; w3m web browser
+(setq browse-url-browser-function 'w3m-browse-url)
+(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;; optional keyboard short-cut
+(global-set-key "\C-xm" 'browse-url)
+(setq w3m-use-cookies t)
+
+;weibo
+(add-to-list 'load-path "~/.emacs.d/lisp/weibo.emacs")
+(require 'weibo)
+;;end--------------------------------------------------------------------
