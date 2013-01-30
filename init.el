@@ -216,6 +216,11 @@
 )
 ;;shell autocomplete
 ;(add-to-list 'load-path "~/.emacs.d/lisp/readline-complete")
+;
+(setq explicit-shell-file-name "bash")
+(setq explicit-bash-args '("-ct" "export EMACS=; stty echo; bash"))
+(setq comint-process-echoes t)
+
 (require 'readline-complete)
 
 (add-to-list 'ac-modes 'shell-mode)
