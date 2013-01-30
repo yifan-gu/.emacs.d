@@ -215,7 +215,7 @@
                        (yas/get-snippet-tables)))
 )
 ;;shell autocomplete
-(add-to-list 'load-path "~/.emacs.d/lisp/readline-complete")
+;(add-to-list 'load-path "~/.emacs.d/lisp/readline-complete")
 (require 'readline-complete)
 
 (add-to-list 'ac-modes 'shell-mode)
