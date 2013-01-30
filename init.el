@@ -251,6 +251,6 @@
 (setq w3m-use-cookies t)
 
 ;weibo
-(add-to-list 'load-path "~/.emacs.d/lisp/weibo.emacs")
+(add-to-list 'load-path "~/.emacs.d/lisp/weibo")
 (require 'weibo)
 ;;end--------------------------------------------------------------------
