@@ -227,16 +227,33 @@
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
 
 
+;vi emulation
+(add-to-list 'load-path "~/.emacs.d/lisp/evil")
+(require 'evil)
+(evil-mode 1)
 
 
 
 
 
 
-
-
-
-
+;; mew -- mail
+(autoload 'mew "mew" nil t)
+(autoload 'mew-send "mew" nil t)
+;; Optional setup (Read Mail menu for Emacs 21):
+(if (boundp 'read-mail-command)
+    (setq read-mail-command 'mew))
+;; Optional setup (e.g. C-xm for sending a message):
+(autoload 'mew-user-agent-compose "mew" nil t)
+(if (boundp 'mail-user-agent)
+    (setq mail-user-agent 'mew-user-agent))
+(if (fboundp 'define-mail-user-agent)
+    (define-mail-user-agent
+      'mew-user-agent
+      'mew-user-agent-compose
+      'mew-draft-send-message
+      'mew-draft-kill
+      'mew-send-hook))
 
 
 
@@ -244,11 +261,11 @@
 
 ;;FUN Functions---------------------------------------------------------
 ; w3m web browser
-(setq browse-url-browser-function 'w3m-browse-url)
-(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
-;; optional keyboard short-cut
-(global-set-key "\C-xm" 'browse-url)
-(setq w3m-use-cookies t)
+;(setq browse-url-browser-function 'w3m-browse-url)
+;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;;; optional keyboard short-cut
+;(global-set-key "\C-xm" 'browse-url)
+;(setq w3m-use-cookies t)
 
 ;weibo
 (add-to-list 'load-path "~/.emacs.d/lisp/weibo")
