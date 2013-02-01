@@ -80,7 +80,7 @@
      (italic ((t (:italic t :underline nil :background nil))))
      (font-lock-builtin-face ((t (:foreground "#729fcf"))))
      (font-lock-comment-face ((t (:foreground "#34e2e2"))))
-     (font-lock-constant-face ((t (:foreground "#ad7fa8"))))
+     (font-lock-constant-face ((t (:foreground "#8ae234"))))
      (font-lock-doc-face ((t (:foreground "#888a85"))))
      (font-lock-keyword-face ((t (:foreground "#729fcf" :bold t))))
      (font-lock-string-face ((t (:foreground "#ad7fa8" :italic t))))

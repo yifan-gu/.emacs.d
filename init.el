@@ -69,7 +69,14 @@
 
 ;python autoindent
 (add-hook 'python-mode-hook '(lambda ()
-                               (local-set-key (kbd "RET") 'newline-and-indent)))
+							   (local-set-key (kbd "RET") 'newline-and-indent)))
+;shell-scriptmode autoindent
+(add-hook 'sh-mode-hook '(lambda()
+							  (local-set-key (kbd "RET") 'newline-and-indent)))
+;elisp mode autoindent
+(add-hook 'emacs-lisp-mode-hook '(lambda()
+							  (local-set-key (kbd "RET") 'newline-and-indent)))
+
 
 ;autopair
 (require 'autopair)
