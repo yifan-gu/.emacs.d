@@ -72,8 +72,8 @@
                                (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;autopair
-;(require 'autopair)
-;(autopair-global-mode) ;; enable autopair in all buffers
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
 
 
 ;kill whole line biding
@@ -228,10 +228,10 @@
 
 
 ;vi emulation
-(add-to-list 'load-path "~/.emacs.d/lisp/evil")
-(require 'evil)
-(evil-mode 1)
-
+;(add-to-list 'load-path "~/.emacs.d/lisp/evil")
+;(require 'evil)
+;(evil-mode 1)
+(global-set-key (kbd "M-z") 'vi-mode)
 
 
 
@@ -260,14 +260,15 @@
 
 
 ;;FUN Functions---------------------------------------------------------
-; w3m web browser
-;(setq browse-url-browser-function 'w3m-browse-url)
-;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+										; w3m web browser
+										;(setq browse-url-browser-function 'w3m-browse-url)
+										;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
 ;;; optional keyboard short-cut
-;(global-set-key "\C-xm" 'browse-url)
-;(setq w3m-use-cookies t)
+										;(global-set-key "\C-xm" 'browse-url)
+										;(setq w3m-use-cookies t)
 
-;weibo
+										;weibo
 (add-to-list 'load-path "~/.emacs.d/lisp/weibo")
 (require 'weibo)
 ;;end--------------------------------------------------------------------
+
