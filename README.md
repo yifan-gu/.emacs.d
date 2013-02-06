@@ -12,6 +12,11 @@ packages need to be installed:
   ```sudo apt-get install w3m-el-snapshot```
 * some python dependencies for 
 
-  ```cd ./lisp/emacs-jedi```
-  ```make requiremets```
-  ```sudo pip install -r requirements.txt```
+  ```cd ./lisp/emacs-jedi;
+  make requiremets;
+  sudo pip install -r requirements.txt```
+  ```python
+  import datetime
+  import traceback
+  print "hello"
+  ```
