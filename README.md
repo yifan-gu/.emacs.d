@@ -14,7 +14,7 @@ packages need to be installed:
   ```shell
   sudo apt-get install w3m-el-snapshot
   ```
-* some python dependencies for 
+* some python dependencies for jedi
 
   ```shell
   cd ./lisp/emacs-jedi;
