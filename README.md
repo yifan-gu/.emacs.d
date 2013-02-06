@@ -6,12 +6,14 @@ my emacs setup
 packages need to be installed:
 * ibus-el
 
-  ```script
-  sudo apt-get install ibus-el```
+  ```shell
+  sudo apt-get install ibus-el
+  ```
 * w3m-el-snapshot
   
-  ```script
-  sudo apt-get install w3m-el-snapshot```
+  ```shell
+  sudo apt-get install w3m-el-snapshot
+  ```
 * some python dependencies for 
 
   ```shell
