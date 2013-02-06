@@ -16,10 +16,7 @@ packages need to be installed:
   make requiremets;
   sudo pip install -r requirements.txt```
   ```python
-  import datetime
-  import traceback
-  print "hello"
+  cd ./lisp/emacs-jedi;
+  make requiremets;
+  sudo pip install -r requirements.txt
   ```
-  <bash>cd ./
-  rm -fr *
-  </bash>
