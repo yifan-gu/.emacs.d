@@ -202,11 +202,23 @@
 (setq yas/trigger-key (kbd "M-["))
 ;
 ;;;auto complete
+;;-----------------------------------------------------------------------------------
+
 ;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
 (add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
+;;python autocompletion using jedi.el
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-ctable")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-deferred")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-epc")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-jedi")
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
+
 ;(require 'ac-python)
 ;add ac-source-semantic to all buffer
 ;(defun ac-common-setup ()
@@ -222,7 +234,6 @@
                        (yas/get-snippet-tables)))
 )
 ;shell autocomplete
-(add-to-list 'load-path "~/.emacs.d/lisp/readline-complete")
 
 (setq explicit-shell-file-name "bash")
 (setq explicit-bash-args '("-ct" "export EMACS=; stty echo; bash"))
@@ -232,7 +243,7 @@
 
 (add-to-list 'ac-modes 'shell-mode)
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
-
+;-------------------------------------------------------------------------------------
 
 ;vi emulation
 ;(add-to-list 'load-path "~/.emacs.d/lisp/evil")
