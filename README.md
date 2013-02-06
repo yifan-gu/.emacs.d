@@ -13,5 +13,7 @@ packages need to be installed:
 * some python dependencies for 
 
   ```cd ./lisp/emacs-jedi
+  
   make requiremets
+  
   sudo pip install -r requirements.txt```
