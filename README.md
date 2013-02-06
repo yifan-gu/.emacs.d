@@ -17,7 +17,7 @@ packages need to be installed:
 * some python dependencies for jedi
 
   ```shell
-  cd ./lisp/emacs-jedi;
-  make requiremets;
+  cd ./lisp/emacs-jedi
+  make requiremets
   sudo pip install -r requirements.txt
   ```
