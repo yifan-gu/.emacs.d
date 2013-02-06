@@ -15,7 +15,7 @@ packages need to be installed:
   ```cd ./lisp/emacs-jedi;
   make requiremets;
   sudo pip install -r requirements.txt```
-  ```python
+  ```script
   cd ./lisp/emacs-jedi;
   make requiremets;
   sudo pip install -r requirements.txt
