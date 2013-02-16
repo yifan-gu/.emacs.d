@@ -22,7 +22,7 @@
 (setq scroll-margin 3
       scroll-conservatively 10000)
 ; no menu bar
-;(menu-bar-mode nil)
+(menu-bar-mode nil)
 ; no tool bar
 (tool-bar-mode nil)
 ; no scroll bar
@@ -134,10 +134,10 @@
 (global-set-key (kbd "<M-S-left>")   'buf-move-left)
 (global-set-key (kbd "<M-S-right>")  'buf-move-right)
 ;bind window move key
-(global-set-key (kbd "<M-up>") 'windmove-up)
-(global-set-key (kbd "<M-down>") 'windmove-down)
-(global-set-key (kbd "<M-right>") 'windmove-right)
-(global-set-key (kbd "<M-left>") 'windmove-left)
+(global-set-key (kbd "<S-up>") 'windmove-up)
+(global-set-key (kbd "<S-down>") 'windmove-down)
+(global-set-key (kbd "<S-right>") 'windmove-right)
+(global-set-key (kbd "<S-left>") 'windmove-left)
 
 ;;fringe background color black,
 ;(custom-set-variables
