@@ -65,18 +65,22 @@
               indent-tabs-mode t)
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;python autoindent
-(add-hook 'python-mode-hook '(lambda ()
-							   (local-set-key (kbd "RET") 'newline-and-indent)))
-;shell-scriptmode autoindent
-(add-hook 'sh-mode-hook '(lambda()
-							  (local-set-key (kbd "RET") 'newline-and-indent)))
-;elisp mode autoindent
-(add-hook 'emacs-lisp-mode-hook '(lambda()
-							  (local-set-key (kbd "RET") 'newline-and-indent)))
-
+;(add-hook 'python-mode-hook '(lambda ()
+;							   (local-set-key (kbd "RET") 'newline-and-indent)))
+;;shell-scriptmode autoindent
+;(add-hook 'sh-mode-hook '(lambda()
+;							  (local-set-key (kbd "RET") 'newline-and-indent)))
+;;elisp mode autoindent
+;(add-hook 'emacs-lisp-mode-hook '(lambda()
+;							  (local-set-key (kbd "RET") 'newline-and-indent)))
+;(add-hook 'javascript-mode-hook '(lambda()
+;								   (local-set-key (kbd "RET") 'newline-and-indent)))
+;(add-hook 'html-mode-hook '(lambda()
+;		  (local-set-key (kbd "RET") 'newline-and-indent)))
+;
 
 ;autopair
 (require 'autopair)
