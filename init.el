@@ -118,8 +118,8 @@
                     (semantic-mrub-switch-tags first))))
 ;(global-semantic-idle-completions-mode)
 ;;
-;set ssh as the tramp default method
-;(setq tramp-default-method "ssh")
+;set tramp default method
+;(setq tramp-default-method "sftp")
 
 ;bash-complete
 (require 'bash-completion)
@@ -255,7 +255,11 @@
 ;(evil-mode 1)
 (global-set-key (kbd "M-z") 'vi-mode)
 
-
+;open recent file
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 
 
