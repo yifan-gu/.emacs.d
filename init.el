@@ -261,7 +261,10 @@
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-
+;; all backups goto ~/.backups instead in the current director
+;(setq backup-directory-alist (quote (("." . "~/.backups"))))
+;disable backups
+(setq make-backup-files nil)
 
 ;; mew -- mail
 (autoload 'mew "mew" nil t)
