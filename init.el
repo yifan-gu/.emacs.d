@@ -23,7 +23,7 @@
       scroll-conservatively 10000)
 (setq scroll-step 1)
 ; no menu bar
-;(menu-bar-mode nil)
+(menu-bar-mode nil)
 ; no tool bar
 (tool-bar-mode nil)
 ; no scroll bar
