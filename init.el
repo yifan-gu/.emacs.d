@@ -21,8 +21,9 @@
 ; prevent rolling page jump too much, scroll-margin 3
 (setq scroll-margin 3
       scroll-conservatively 10000)
+(setq scroll-step 1)
 ; no menu bar
-(menu-bar-mode nil)
+;(menu-bar-mode nil)
 ; no tool bar
 (tool-bar-mode nil)
 ; no scroll bar
@@ -260,6 +261,7 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+;(setq recentf-keep '(file-remote-p file-readable-p))
 
 ;; all backups goto ~/.backups instead in the current director
 ;(setq backup-directory-alist (quote (("." . "~/.backups"))))
