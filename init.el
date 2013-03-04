@@ -87,7 +87,6 @@
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-
 ;kill whole line biding
 ;(global-set-key (kbd "M-g") 'kill-whole-line)
 ;
@@ -198,14 +197,36 @@
 
 ;compile keybinding
 (global-set-key (kbd "C-c l") 'compile)
-
 (add-to-list 'load-path "~/.emacs.d/lisp/yasnippet-0.6.1c")
+(require 'popup)
 (require 'yasnippet)
 ;(yas-global-mode 1)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/lisp/yasnippet-0.6.1c/snippets")
 (setq yas/trigger-key (kbd "M-["))
-;
+;; add some shotcuts in popup menu mode
+(define-key popup-menu-keymap (kbd "M-n") 'popup-next)
+(define-key popup-menu-keymap (kbd "TAB") 'popup-next)
+(define-key popup-menu-keymap (kbd "<tab>") 'popup-next)
+(define-key popup-menu-keymap (kbd "<backtab>") 'popup-previous)
+(define-key popup-menu-keymap (kbd "M-p") 'popup-previous)
+ 
+(defun yas/popup-isearch-prompt (prompt choices &optional display-fn)
+(when (featurep 'popup)
+(popup-menu*
+(mapcar
+(lambda (choice)
+(popup-make-item
+(or (and display-fn (funcall display-fn choice))
+choice)
+:value choice))
+choices)
+:prompt prompt
+;; start isearch mode immediately
+:isearch t
+)))
+ 
+(setq yas/prompt-functions '(yas/popup-isearch-prompt yas/no-prompt))
 ;;;auto complete
 ;;-----------------------------------------------------------------------------------
 
@@ -214,6 +235,7 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
+
 ;;python autocompletion using jedi.el
 (add-to-list 'load-path "~/.emacs.d/lisp/emacs-ctable")
 (add-to-list 'load-path "~/.emacs.d/lisp/emacs-deferred")
@@ -238,6 +260,13 @@
 (apply 'append (mapcar 'ac-yasnippet-candidate-1
                        (yas/get-snippet-tables)))
 )
+;; dirty fix for having AC everywhere
+(define-globalized-minor-mode real-global-auto-complete-mode
+  auto-complete-mode (lambda ()
+					   (if (not (minibufferp (current-buffer)))
+                         (auto-complete-mode 1))
+                       ))
+(real-global-auto-complete-mode t)
 ;shell autocomplete
 
 (setq explicit-shell-file-name "bash")
@@ -249,7 +278,6 @@
 (add-to-list 'ac-modes 'shell-mode)
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
 ;------------------------------------------------------------------------------------
-
 ;;------------web mode--------------
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -271,9 +299,10 @@
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-code-indent-offset 2)
+  (ac-common-setup))
 (add-hook 'web-mode-hook 'web-mode-hook)
-(add-to-list 'web-mode-snippets '("mydiv" "<div>" "</div>"))
+;(add-to-list 'web-mode-snippets '("mydiv" "<div>" "</div>"))
 ;----------end----------------------
 ;vi emulation
 ;(add-to-list 'load-path "~/.emacs.d/lisp/evil")
