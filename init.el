@@ -28,7 +28,8 @@
 (tool-bar-mode nil)
 ; no scroll bar
 (set-scroll-bar-mode nil)
-
+;no blink cursor
+(blink-cursor-mode)
 ;(auto-image-file-mode t);image mode
 (show-paren-mode t);
 (setq mouse-yank-at-point t); yank with middle key
