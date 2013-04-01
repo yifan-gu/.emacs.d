@@ -278,6 +278,9 @@ choices)
 
 (add-to-list 'ac-modes 'shell-mode)
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
+
+;;enable hi-lock-mode
+(global-hi-lock-mode 1)
 ;------------------------------------------------------------------------------------
 ;;------------web mode--------------
 (require 'web-mode)
