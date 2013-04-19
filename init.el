@@ -22,6 +22,11 @@
 (setq scroll-margin 3
       scroll-conservatively 10000)
 (setq scroll-step 1)
+
+;move 4 line
+(global-set-key "\M-n"  (lambda () (interactive) (next-line   4)) )
+(global-set-key "\M-p"  (lambda () (interactive) (previous-line 4)) )
+
 ; no menu bar
 ;(menu-bar-mode nil)
 ; no tool bar
