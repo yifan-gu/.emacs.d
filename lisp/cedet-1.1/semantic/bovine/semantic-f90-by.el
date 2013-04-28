@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2010 Free Software Foundation
 
-;; Author: gu_yifan <gu_yifan@guyf>
-;; Created: 2013-01-25 12:06:30+0800
+;; Author: yifan <yifan@yifan-laptop>
+;; Created: 2013-04-29 02:19:59+0800
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

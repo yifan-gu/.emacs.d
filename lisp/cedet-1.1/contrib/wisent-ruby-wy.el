@@ -2,8 +2,8 @@
 
 ;;; Copyright (C) 2007 Daniel Debertin (debertin@gmail.com)
 
-;; Author: gu_yifan <gu_yifan@guyf>
-;; Created: 2013-01-25 12:06:46+0800
+;; Author: yifan <yifan@yifan-laptop>
+;; Created: 2013-04-29 02:20:13+0800
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

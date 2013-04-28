@@ -94,8 +94,10 @@ to give to the program."
 
 (defun semantic-cpp-defs (str)
   "Convert CPP output STR into a list of cons cells with defines for C++."
-  (let ((lines (split-string str "\n"))
+  (let ((lines nil)
         (lst nil))
+    (if (not (numberp str))
+        (setq lines (split-string str "\n")))
     (dolist (L lines)
       (let ((dat (split-string L)))
         (when (= (length dat) 3)
