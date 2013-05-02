@@ -122,6 +122,25 @@
                                                    (semantic-current-tag))
                       (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
+
+;; (setq semanticdb-project-roots (list (expand-file-name "/")))
+(defconst cedet-user-include-dirs
+  (list "." ".." "../include" "../inc" "../common" "../public"
+        "../.." "../../include" "../../inc" "../../common" "../../public"))
+(defconst cedet-win32-include-dirs
+  (list "/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include"
+        "/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/c++/"
+        "/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/backward"))
+(require 'semantic-c nil 'noerror)
+(let ((include-dirs cedet-user-include-dirs))
+  (when (eq system-type 'windows-nt)
+    (setq include-dirs (append include-dirs cedet-win32-include-dirs)))
+  (mapc (lambda (dir)
+          (semantic-add-system-include dir 'c++-mode)
+          (semantic-add-system-include dir 'c-mode))
+        include-dirs))
+
+
 ;(global-semantic-idle-completions-mode)
 ;;
 ;set tramp default method
@@ -349,7 +368,12 @@ choices)
       'mew-draft-kill
       'mew-send-hook))
 
-
+;;highlight symbol
+;(add-to-list 'load-path "~/.emacs.d/lisp/highlight-symbol")
+(require 'highlight-symbol)
+(global-set-key [f11] 'highlight-symbol-at-point)
+(global-set-key [(control f11)] 'highlight-symbol-next)
+(global-set-key [(meta f11)] 'highlight-symbol-prev)
 
 
 

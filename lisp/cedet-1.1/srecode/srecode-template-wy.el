@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2005, 2007, 2008, 2009, 2010 Eric M. Ludlam
 
-;; Author: gu_yifan <gu_yifan@guyf>
-;; Created: 2013-01-25 12:06:33+0800
+;; Author: yifan <yifan@yifan-laptop>
+;; Created: 2013-04-29 02:20:02+0800
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 
