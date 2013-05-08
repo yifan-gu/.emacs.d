@@ -3,5 +3,5 @@
 # contributor: gu_yifan
 # key: sprintf
 # --
-sprintf(${1:string}, "${2:%s}\\n"${2:$(if (string-match "%" text) ", " "\);")
+sprintf(${1:string}, "${2:%s}"${2:$(if (string-match "%" text) ", " "\);")
 }$3${2:$(if (string-match "%" text) "\);" "")}
