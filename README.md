@@ -21,3 +21,16 @@ packages need to be installed:
   make requiremets
   sudo pip install -r requirements.txt
   ```
+* CEDET may need reinstallation
+
+* org-mode
+** ditaa
+  ```shell
+  sudo apt-get install ditaa
+  ```
+* Latex
+** auctex
+  ```shell
+  sudo apt-get install auctex
+  ```
+  

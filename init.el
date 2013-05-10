@@ -390,3 +390,74 @@ choices)
 (require 'weibo)
 ;;end--------------------------------------------------------------------
 
+;; ORG MODE
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/org-mode/lisp"))
+(load-file "~/.emacs.d/lisp/htmlize.el")
+(add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+(require 'org)
+(setq org-agenda-files (quote ("~/Dropbox/org"
+                               "~/Dropbox/org/CMU"
+                               "~/Dropbox/org/Project")))
+
+;;export
+(require 'ox-html)
+(require 'ox-latex)
+(require 'ox-ascii)
+;(setq org-ditaa-jar-path "~/usr/bin/ditaa")
+(setq org-plantuml-jar-path "~/java/plantuml.jar")
+(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
+
+; Make babel results blocks lowercase
+(setq org-babel-results-keyword "results")
+
+(defun bh/display-inline-images ()
+  (condition-case nil
+      (org-display-inline-images)
+    (error nil)))
+
+(org-babel-do-load-languages
+ (quote org-babel-load-languages)
+ (quote ((emacs-lisp . t)
+         (dot . t)
+         (ditaa . t)
+         (R . t)
+         (python . t)
+         (ruby . t)
+         (gnuplot . t)
+         (clojure . t)
+         (sh . t)
+         (ledger . t)
+         (org . t)
+         (plantuml . t)
+         (latex . t))))
+
+
+; Do not prompt to confirm evaluation
+; This may be dangerous - make sure you understand the consequences
+; of setting this -- see the docstring for details
+(setq org-confirm-babel-evaluate nil)
+
+; Use fundamental mode when editing plantuml blocks with C-c '
+(add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
+
+
+
+;; Don't enable this because it breaks access to emacs from my Android phone
+(setq org-startup-with-inline-images nil)
+
+
+
+;;auctex mode
+
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+(setq TeX-output-view-style (quote (("^pdf$" "." "evince %o %(outpage)"))))
+
+(add-hook 'LaTeX-mode-hook
+(lambda()
+(add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+(setq TeX-command-default "XeLaTeX")))
