@@ -34,3 +34,7 @@ packages need to be installed:
   sudo apt-get install auctex
   ```
   
+* go-mode
+** install [gocode](https://github.com/nsf/gocode)
+   make sure to put it into $PATH_OF_GO/bin
+   
