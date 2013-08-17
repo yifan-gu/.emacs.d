@@ -61,15 +61,9 @@
 ;(set-frame-font "Monaco-10")
 
 ; indent
-(setq js-indent-level 2)
-(setq indent-tabs-mode nil)
-(setq default-tab-width 4)
-(setq tab-width 4)
-(setq tab-stop-list ())
-;c indent
-(setq-default c-basic-offset 4
-              tab-width 4
-              indent-tabs-mode t)
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "RET") 'newline-and-indent)
