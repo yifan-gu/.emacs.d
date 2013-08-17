@@ -1,4 +1,4 @@
-;;;;Ivan's .emacs file
+;;;;Evan's .emacs file
 ; Yifan Gu
 ; 17 January 2013
 
