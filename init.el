@@ -61,6 +61,7 @@
 ;(set-frame-font "Monaco-10")
 
 ; indent
+(setq-default indent-tabs-mode nil)
 (setq c-default-style "linux"
       c-basic-offset 4)
 
