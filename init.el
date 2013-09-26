@@ -85,8 +85,8 @@
 ;
 
 ;autopair
-(require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers
+;(require 'autopair)
+;(autopair-global-mode) ;; enable autopair in all buffers
 
 ;kill whole line biding
 ;(global-set-key (kbd "M-g") 'kill-whole-line)
