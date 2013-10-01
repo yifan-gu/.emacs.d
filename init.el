@@ -57,7 +57,7 @@
                          (color-theme-tangotango)
                          ))
 ;font
-(set-default-font "Monospace-10")
+(set-default-font "Monospace-11")
 ;(set-frame-font "Monaco-10")
 
 ; indent
