@@ -1,4 +1,4 @@
-;;;;Evan's .emacs file
+;;;;Yifan's .emacs file
 ; Yifan Gu
 ; 17 January 2013
 
@@ -57,7 +57,7 @@
                          (color-theme-tangotango)
                          ))
 ;font
-(set-default-font "Monospace-11")
+(set-default-font "Monospace-10")
 ;(set-frame-font "Monaco-10")
 
 ; indent
@@ -139,7 +139,7 @@
 ;(global-semantic-idle-completions-mode)
 ;;
 ;set tramp default method
-;(setq tramp-default-method "sftp")
+(setq tramp-default-method "ssh")
 
 ;bash-complete
 (require 'bash-completion)

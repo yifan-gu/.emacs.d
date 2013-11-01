@@ -1,0 +1,6 @@
+# name: ifnull (...) { ... }
+# key: ifnull
+# --
+if (NULL == ${1:var}) {
+    $0
+}
