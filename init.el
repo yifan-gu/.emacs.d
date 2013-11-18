@@ -4,7 +4,7 @@
 
 ; set username and mail address
 (setq user-full-name "Yifan Gu")
-(setq user-mail-address "gu_yifan@vobile.com")
+(setq user-mail-address "guyifan1121@gmail.com")
 (defconst my-company "vobile")
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -120,7 +120,7 @@
 
 ;; (setq semanticdb-project-roots (list (expand-file-name "/")))
 (defconst cedet-user-include-dirs
-  (list "." ".." "../include" "../inc" "../common" "../public"
+  (list "." ".." "./include" "../include" "../inc" "../common" "../public"
         "../.." "../../include" "../../inc" "../../common" "../../public"))
 (defconst cedet-win32-include-dirs
   (list "/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include"
@@ -528,3 +528,6 @@ choices)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;;indent for js
+(setq js-indent-level 2)

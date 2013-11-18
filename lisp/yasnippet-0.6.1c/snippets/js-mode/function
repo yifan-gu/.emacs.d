@@ -1,0 +1,6 @@
+# name: function (...) { ... }
+# key: fun
+# --
+function (${1:argv}) {
+  $0
+}
