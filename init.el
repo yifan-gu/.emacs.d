@@ -531,3 +531,6 @@ choices)
 
 ;;indent for js
 (setq js-indent-level 2)
+
+;;julia mode
+(require 'julia-mode)
