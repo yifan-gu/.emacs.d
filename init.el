@@ -451,7 +451,6 @@ choices)
          (plantuml . t)
          (latex . t))))
 
-
 ; Do not prompt to confirm evaluation
 ; This may be dangerous - make sure you understand the consequences
 ; of setting this -- see the docstring for details
@@ -460,15 +459,10 @@ choices)
 ; Use fundamental mode when editing plantuml blocks with C-c '
 (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
 
-
-
 ;; Don't enable this because it breaks access to emacs from my Android phone
 (setq org-startup-with-inline-images nil)
 
-
-
 ;;auctex mode
-
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
 (setq TeX-auto-save t)
@@ -482,18 +476,13 @@ choices)
 (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
 (setq TeX-command-default "XeLaTeX")))
 
-
-
 ;;go mode
 (add-to-list 'load-path "~/.emacs.d/lisp/go")
 (require 'go-mode-load)
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 
-
-;;
 ;; ace jump mode major function
-;; 
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -502,11 +491,7 @@ choices)
 ;; you can select the key you prefer to
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-
-
-;; 
 ;; enable a more powerful jump back function from ace jump mode
-;;
 (autoload
   'ace-jump-mode-pop-mark
   "ace-jump-mode"
@@ -534,3 +519,6 @@ choices)
 
 ;;julia mode
 (require 'julia-mode)
+
+;;protobuf mode
+(require 'protobuf-mode)
