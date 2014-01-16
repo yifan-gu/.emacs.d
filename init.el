@@ -530,4 +530,3 @@ choices)
 (defalias 'ag-same 'ack-and-a-half-same)
 (defalias 'ag-find-file 'ack-and-a-half-find-file)
 (defalias 'ag-find-file-same 'ack-and-a-half-find-file-same)
-
