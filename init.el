@@ -523,10 +523,18 @@ choices)
 (require 'protobuf-mode)
 
 ;;ack-grep
-(add-to-list 'load-path "/path/to/ack-and-a-half")
 (require 'ack-and-a-half)
 ;; Create shorter aliases
 (defalias 'ag 'ack-and-a-half)
 (defalias 'ag-same 'ack-and-a-half-same)
 (defalias 'ag-find-file 'ack-and-a-half-find-file)
 (defalias 'ag-find-file-same 'ack-and-a-half-find-file-same)
+
+;; git-modes
+(add-to-list 'load-path "~/.emacs.d/lisp/git-modes/")
+;; magit
+(add-to-list 'load-path "~/.emacs.d/lisp/magit/")
+(eval-after-load 'info
+  '(progn (info-initialize)
+          (add-to-list 'Info-directory-list "~/.emacs.d/lisp/magit/")))
+(require 'magit)
