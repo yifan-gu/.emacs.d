@@ -506,7 +506,6 @@ choices)
 ;;If you use evil
 ;;(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
 
-
 ;;markdown
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
@@ -522,3 +521,13 @@ choices)
 
 ;;protobuf mode
 (require 'protobuf-mode)
+
+;;ack-grep
+(add-to-list 'load-path "/path/to/ack-and-a-half")
+(require 'ack-and-a-half)
+;; Create shorter aliases
+(defalias 'ag 'ack-and-a-half)
+(defalias 'ag-same 'ack-and-a-half-same)
+(defalias 'ag-find-file 'ack-and-a-half-find-file)
+(defalias 'ag-find-file-same 'ack-and-a-half-find-file-same)
+
