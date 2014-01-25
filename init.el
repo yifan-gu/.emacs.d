@@ -476,12 +476,6 @@ choices)
 (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
 (setq TeX-command-default "XeLaTeX")))
 
-;;go mode
-(add-to-list 'load-path "~/.emacs.d/lisp/go")
-(require 'go-mode-load)
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-
 ;; ace jump mode major function
 (autoload
   'ace-jump-mode
@@ -538,3 +532,9 @@ choices)
   '(progn (info-initialize)
           (add-to-list 'Info-directory-list "~/.emacs.d/lisp/magit/")))
 (require 'magit)
+
+;;go mode
+(add-to-list 'load-path "~/.emacs.d/lisp/go")
+(require 'go-mode-load)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
