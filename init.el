@@ -536,5 +536,5 @@ choices)
 ;;go mode
 (add-to-list 'load-path "~/.emacs.d/lisp/go")
 (require 'go-mode-load)
-(require 'go-autocomplete)
 (require 'auto-complete-config)
+(require 'go-autocomplete)
