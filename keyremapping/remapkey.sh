@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# remap some keys in ubuntu for emacs/hhkb users
+# remap some keys under ubuntu for emacs/hhkb users
 
 # remap `\' to BackSpace
 # remap BackSpace to `\'
