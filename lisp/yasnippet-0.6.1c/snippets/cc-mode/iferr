@@ -1,6 +1,6 @@
 # name: iferr (...) { ... }
 # key: iferr
 # --
-if (${1:var} < 0) {
+if (${1:ret} < 0) {
     $0
 }
