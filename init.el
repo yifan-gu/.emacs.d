@@ -1,45 +1,45 @@
 ;;;;Yifan's .emacs file
-; Yifan Gu
-; 17 January 2013
+;; Yifan Gu
+;; 17 January 2013
 
-; set username and mail address
+;; set username and mail address
 (setq user-full-name "Yifan Gu")
 (setq user-mail-address "guyifan1121@gmail.com")
 (defconst my-company "vobile")
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
-;(load-theme 'solarized-dark)
-; not to show GNU startup 
-;(setq inhibit-startup-message t)
-; show key seq fast
+;; (load-theme 'solarized-dark)
+;; not to show GNU startup
+;; (setq inhibit-startup-message t)
+;; show key seq fast
 (setq echo-keystrokes 0.1)
-; show line number
-;(add-hook 'find-file-hook (lambda () (linum-mode 1)))
+;; show line number
+;;(add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
-; not asking yes or no, use y/n
+;; not asking yes or no, use y/n
 (fset 'yes-or-no-p 'y-or-n-p)
-; prevent rolling page jump too much, scroll-margin 3
+;; prevent rolling page jump too much, scroll-margin 3
 (setq scroll-margin 3
       scroll-conservatively 10000)
 (setq scroll-step 1)
 
-;move 4 line
+;; move 4 line
 (global-set-key "\M-n"  (lambda () (interactive) (next-line   4)) )
 (global-set-key "\M-p"  (lambda () (interactive) (previous-line 4)) )
 
-; no menu bar
-;(menu-bar-mode nil)
-; no tool bar
+;; no menu bar
+;;(menu-bar-mode nil)
+;; no tool bar
 (tool-bar-mode nil)
-; no scroll bar
+;; no scroll bar
 (set-scroll-bar-mode nil)
-;no blink cursor
+;;no blink cursor
 (blink-cursor-mode)
-;(auto-image-file-mode t);image mode
-(show-paren-mode t);
-(setq mouse-yank-at-point t); yank with middle key
-(setq x-selet-enable-clipboard t);emacs paste clip with other program
-; full screen
+;;(auto-image-file-mode t);;image mode
+(show-paren-mode t);;
+(setq mouse-yank-at-point t);; yank with middle key
+(setq x-selet-enable-clipboard t);;emacs paste clip with other program
+;; full screen
 (defun toggle-fullscreen()
   (interactive)
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
@@ -49,73 +49,74 @@
   )
 (toggle-fullscreen)
 
-;color theme
+;;color theme
 (add-to-list 'load-path "~/.emacs.d/lisp/color-theme-6.6.0")
 (require 'color-theme)
 (eval-after-load "color-theme"
-                 '(progn (color-theme-initialize) ;(color-theme-billw) 
-                         (color-theme-tangotango)
-                         ))
-;font
+  '(progn (color-theme-initialize) ;;(color-theme-billw)
+          (color-theme-tangotango)
+          ))
+;;font
 (set-default-font "Monospace-10")
-;(set-frame-font "Monaco-10")
+;;(set-frame-font "Monaco-10")
 
-; indent
+;; indent
 (setq-default indent-tabs-mode nil)
 (setq c-default-style "linux")
-;      c-basic-offset 4)
+;;      c-basic-offset 4)
 
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-;python autoindent
-;(add-hook 'python-mode-hook '(lambda ()
-;							   (local-set-key (kbd "RET") 'newline-and-indent)))
+;;python autoindent
+;;(add-hook 'python-mode-hook '(lambda ()
+;;							   (local-set-key (kbd "RET") 'newline-and-indent)))
 ;;shell-scriptmode autoindent
-;(add-hook 'sh-mode-hook '(lambda()
-;							  (local-set-key (kbd "RET") 'newline-and-indent)))
+;;(add-hook 'sh-mode-hook '(lambda()
+
+;;							  (local-set-key (kbd "RET") 'newline-and-indent)))
 ;;elisp mode autoindent
-;(add-hook 'emacs-lisp-mode-hook '(lambda()
-;							  (local-set-key (kbd "RET") 'newline-and-indent)))
-;(add-hook 'javascript-mode-hook '(lambda()
-;								   (local-set-key (kbd "RET") 'newline-and-indent)))
-;(add-hook 'html-mode-hook '(lambda()
-;		  (local-set-key (kbd "RET") 'newline-and-indent)))
-;
+;;(add-hook 'emacs-lisp-mode-hook '(lambda()
+;;							  (local-set-key (kbd "RET") 'newline-and-indent)))
+;;(add-hook 'javascript-mode-hook '(lambda()
+;;								   (local-set-key (kbd "RET") 'newline-and-indent)))
+;;(add-hook 'html-mode-hook '(lambda()
+;;		  (local-set-key (kbd "RET") 'newline-and-indent)))
+;;
 
-;autopair
-;(require 'autopair)
-;(autopair-global-mode) ;; enable autopair in all buffers
+;;autopair
+;;(require 'autopair)
+;;(autopair-global-mode) ;; enable autopair in all buffers
 
-;kill whole line biding
-;(global-set-key (kbd "M-g") 'kill-whole-line)
-;
+;;kill whole line biding
+;;(global-set-key (kbd "M-g") 'kill-whole-line)
+;;
 ;;CEDET
 (load-file "~/.emacs.d/lisp/cedet-1.1/common/cedet.el")
-(global-ede-mode 1)                      ; Enable the Project management system
-(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion 
-(global-srecode-minor-mode 1)            ; Enable template insertion menu
-;semantic config
+(global-ede-mode 1)                      ;; Enable the Project management system
+(semantic-load-enable-code-helpers)      ;; Enable prototype help and smart completion
+(global-srecode-minor-mode 1)            ;; Enable template insertion menu
+;;semantic config
 (semantic-load-enable-minimum-features)
 (semantic-load-enable-code-helpers)
-;(semantic-load-enable-guady-code-helpers)
-;(semantic-load-enable-excessive-code-helpers)
-;(semantic-load-enable-semantic-debugging-helpers)
-;[f12] to jump
+;;(semantic-load-enable-guady-code-helpers)
+;;(semantic-load-enable-excessive-code-helpers)
+;;(semantic-load-enable-semantic-debugging-helpers)
+;;[f12] to jump
 (global-set-key [f12] 'semantic-ia-fast-jump)
-;[S-f12] to jump back
+;;[S-f12] to jump back
 (global-set-key [S-f12]
                 (lambda ()
                   (interactive)
                   (if (ring-empty-p (oref semantic-mru-bookmark-ring ring))
-                    (error "Semantic Bookmark ring is currently empty"))
+                      (error "Semantic Bookmark ring is currently empty"))
                   (let* ((ring (oref semantic-mru-bookmark-ring ring))
                          (alist (semantic-mrub-ring-to-assoc-list ring))
                          (first (cdr (car alist))))
                     (if (semantic-equivalent-tag-p (oref first tag)
                                                    (semantic-current-tag))
-                      (setq first (cdr (car (cdr alist)))))
+                        (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
 
 ;; (setq semanticdb-project-roots (list (expand-file-name "/")))
@@ -136,53 +137,53 @@
         include-dirs))
 
 
-;(global-semantic-idle-completions-mode)
+;;(global-semantic-idle-completions-mode)
 ;;
-;set tramp default method
+;;set tramp default method
 (setq tramp-default-method "ssh")
 
-;bash-complete
+;;bash-complete
 (require 'bash-completion)
 (bash-completion-setup)
 
-; Set transparency of emacs
+;; Set transparency of emacs
 (defun transparency (value)
   "Sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "nTransparency Value 0 - 100 opaque:")
   (set-frame-parameter (selected-frame) 'alpha value))
 
-;buffer-move: swap windows
+;;buffer-move: swap windows
 (require 'buffer-move)
 (global-set-key (kbd "<M-S-up>")     'buf-move-up)
 (global-set-key (kbd "<M-S-down>")   'buf-move-down)
 (global-set-key (kbd "<M-S-left>")   'buf-move-left)
 (global-set-key (kbd "<M-S-right>")  'buf-move-right)
-;bind window move key
+;;bind window move key
 (global-set-key (kbd "<S-up>") 'windmove-up)
 (global-set-key (kbd "<S-down>") 'windmove-down)
 (global-set-key (kbd "<S-right>") 'windmove-right)
 (global-set-key (kbd "<S-left>") 'windmove-left)
 
 ;;fringe background color black,
-;(custom-set-variables
-;  ;; custom-set-variables was added by Custom.
-;  ;; If you edit it by hand, you could mess it up, so be careful.
-;  ;; Your init file should contain only one such instance.
-;  ;; If there is more than one, they won't work right.
-; )
-;(custom-set-faces
-;  ;; custom-set-faces was added by Custom.
-;  ;; If you edit it by hand, you could mess it up, so be careful.
-;  ;; Your init file should contain only one such instance.
-;  ;; If there is more than one, they won't work right.
-; '(fringe ((((class color) (background dark)) (:background "black")))))
+;;(custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;; )
+;;(custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;; '(fringe ((((class color) (background dark)) (:background "black")))))
 
-;color for shell
+;;color for shell
 (setq ansi-color-names-vector
       ["black" "#EF2929" "green" "#FCE94F" "#728FCF" "#AD7FA8" "#34E2E2" "white"])
-;default vector:["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
-;
-;ibus for chinese input
+;;default vector:["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
+;;
+;;ibus for chinese input
 (require 'ibus)
 (add-hook 'after-init-hook 'ibus-mode-on)
 
@@ -201,7 +202,7 @@
 
 ;; Behave like vi's O command
 (defun open-previous-line (arg)
-  "Open a new line before the current one. 
+  "Open a new line before the current one.
   See also `newline-and-indent'."
   (interactive "p")
   (beginning-of-line)
@@ -215,12 +216,12 @@
 (defvar newline-and-indent t
   "Modify the behavior of the open-*-line functions to cause them to autoindent.")
 
-;compile keybinding
+;;compile keybinding
 (global-set-key (kbd "C-c l") 'compile)
 (add-to-list 'load-path "~/.emacs.d/lisp/yasnippet-0.6.1c")
 (require 'popup)
 (require 'yasnippet)
-;(yas-global-mode 1)
+;;(yas-global-mode 1)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/lisp/yasnippet-0.6.1c/snippets")
 (setq yas/trigger-key (kbd "M-["))
@@ -230,27 +231,27 @@
 (define-key popup-menu-keymap (kbd "<tab>") 'popup-next)
 (define-key popup-menu-keymap (kbd "<backtab>") 'popup-previous)
 (define-key popup-menu-keymap (kbd "M-p") 'popup-previous)
- 
+
 (defun yas/popup-isearch-prompt (prompt choices &optional display-fn)
-(when (featurep 'popup)
-(popup-menu*
-(mapcar
-(lambda (choice)
-(popup-make-item
-(or (and display-fn (funcall display-fn choice))
-choice)
-:value choice))
-choices)
-:prompt prompt
-;; start isearch mode immediately
-:isearch t
-)))
- 
+  (when (featurep 'popup)
+    (popup-menu*
+     (mapcar
+      (lambda (choice)
+        (popup-make-item
+         (or (and display-fn (funcall display-fn choice))
+             choice)
+         :value choice))
+      choices)
+     :prompt prompt
+     ;; start isearch mode immediately
+     :isearch t
+     )))
+
 (setq yas/prompt-functions '(yas/popup-isearch-prompt yas/no-prompt))
-;;;auto complete
+;;auto complete
 ;;-----------------------------------------------------------------------------------
 
-;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
+;;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
 (add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
@@ -266,31 +267,31 @@ choices)
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
 
-;(require 'ac-python)
-;add ac-source-semantic to all buffer
-;(defun ac-common-setup ()
-;  (setq ac-sources (append ac-sources '(ac-source-semantic-raw)))
-;  )
+;;(require 'ac-python)
+;;add ac-source-semantic to all buffer
+;;(defun ac-common-setup ()
+;;  (setq ac-sources (append ac-sources '(ac-source-semantic-raw)))
+;;  )
 (defun ac-common-setup ()
   (setq ac-sources (append ac-sources '(ac-source-yasnippet)))
   )
 
 (with-no-warnings
-;; >0.6.0
-(apply 'append (mapcar 'ac-yasnippet-candidate-1
-                       (yas/get-snippet-tables)))
-)
+  ;; >0.6.0
+  (apply 'append (mapcar 'ac-yasnippet-candidate-1
+                         (yas/get-snippet-tables)))
+  )
 ;; dirty fix for having AC everywhere
 (define-globalized-minor-mode real-global-auto-complete-mode
   auto-complete-mode (lambda ()
-					   (if (not (minibufferp (current-buffer)))
-                         (auto-complete-mode 1))
+                       (if (not (minibufferp (current-buffer)))
+                           (auto-complete-mode 1))
                        ))
 (real-global-auto-complete-mode t)
-;shell autocomplete
+;;shell autocomplete
 
 (setq explicit-shell-file-name "bash")
-(setq explicit-bash-args '("-ct" "export EMACS=; stty echo; bash"))
+(setq explicit-bash-args '("-ct" "export EMACS=;; stty echo;; bash"))
 (setq comint-process-echoes t)
 
 (require 'readline-complete)
@@ -298,34 +299,33 @@ choices)
 (add-to-list 'ac-modes 'shell-mode)
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
 (add-hook 'c-mode-common-hook '(lambda ()
+                                 ;; ac-omni-completion-sources is made buffer local so
+                                 ;; you need to add it to a mode hook to activate on
+                                 ;; whatever buffer you want to use it with.  This
+                                 ;; example uses C mode (as you probably surmised).
 
-    ;; ac-omni-completion-sources is made buffer local so
-    ;; you need to add it to a mode hook to activate on 
-    ;; whatever buffer you want to use it with.  This
-    ;; example uses C mode (as you probably surmised).
+                                 ;; auto-complete.el expects ac-omni-completion-sources to be
+                                 ;; a list of cons cells where each cell's car is a regex
+                                 ;; that describes the syntactical bits you want AutoComplete
+                                 ;; to be aware of. The cdr of each cell is the source that will
+                                 ;; supply the completion data.  The following tells autocomplete
+                                 ;; to begin completion when you type in a . or a ->
 
-    ;; auto-complete.el expects ac-omni-completion-sources to be
-    ;; a list of cons cells where each cell's car is a regex
-    ;; that describes the syntactical bits you want AutoComplete
-    ;; to be aware of. The cdr of each cell is the source that will
-    ;; supply the completion data.  The following tells autocomplete
-    ;; to begin completion when you type in a . or a ->
+                                 (add-to-list 'ac-omni-completion-sources
+                                              (cons "\\." '(ac-source-semantic)))
+                                 (add-to-list 'ac-omni-completion-sources
+                                              (cons "->" '(ac-source-semantic)))
 
-    (add-to-list 'ac-omni-completion-sources
-                 (cons "\\." '(ac-source-semantic)))
-    (add-to-list 'ac-omni-completion-sources
-                 (cons "->" '(ac-source-semantic)))
-
-    ;; ac-sources was also made buffer local in new versions of
-    ;; autocomplete.  In my case, I want AutoComplete to use 
-    ;; semantic and yasnippet (order matters, if reversed snippets
-    ;; will appear before semantic tag completions).
-	(setq ac-sources (append ac-sources '(ac-source-semantic ac-source-yasnippet)))
-    ;(setq ac-sources '(ac-source-semantic ac-source-yasnippet))
-))
+                                 ;; ac-sources was also made buffer local in new versions of
+                                 ;; autocomplete.  In my case, I want AutoComplete to use
+                                 ;; semantic and yasnippet (order matters, if reversed snippets
+                                 ;; will appear before semantic tag completions).
+                                 (setq ac-sources (append ac-sources '(ac-source-semantic ac-source-yasnippet)))
+                                 ;;(setq ac-sources '(ac-source-semantic ac-source-yasnippet))
+                                 ))
 ;;enable hi-lock-mode
 (global-hi-lock-mode 1)
-;------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------------
 ;;------------web mode--------------
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -336,11 +336,11 @@ choices)
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-;(set-face-attribute 'web-mode-doctype-face nil :foreground "green")
-;(set-face-attribute 'web-mode-html-tag-face nil :bold t :foreground "#edd440")
+;;(set-face-attribute 'web-mode-doctype-face nil :foreground "green")
+;;(set-face-attribute 'web-mode-html-tag-face nil :bold t :foreground "#edd440")
 (set-face-attribute 'web-mode-html-tag-face nil :foreground "#edd440")
 (set-face-attribute 'web-mode-html-attr-name-face nil :foreground "tomato")
-;(set-face-attribute 'web-mode-html-attr-value-face nil :foreground "8ae234")
+;;(set-face-attribute 'web-mode-html-attr-value-face nil :foreground "8ae234")
 
 
 (defun web-mode-hook ()
@@ -350,24 +350,24 @@ choices)
   (setq web-mode-code-indent-offset 2)
   (ac-common-setup))
 (add-hook 'web-mode-hook 'web-mode-hook)
-;(add-to-list 'web-mode-snippets '("mydiv" "<div>" "</div>"))
-;----------end----------------------
-;vi emulation
-;(add-to-list 'load-path "~/.emacs.d/lisp/evil")
-;(require 'evil)
-;(evil-mode 1)
+;;(add-to-list 'web-mode-snippets '("mydiv" "<div>" "</div>"))
+;;----------end----------------------
+;;vi emulation
+;;(add-to-list 'load-path "~/.emacs.d/lisp/evil")
+;;(require 'evil)
+;;(evil-mode 1)
 (global-set-key (kbd "M-z") 'vi-mode)
 
-;open recent file
+;;open recent file
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-;(setq recentf-keep '(file-remote-p file-readable-p))
+;;(setq recentf-keep '(file-remote-p file-readable-p))
 
 ;; all backups goto ~/.backups instead in the current director
-;(setq backup-directory-alist (quote (("." . "~/.backups"))))
-;disable backups
+;;(setq backup-directory-alist (quote (("." . "~/.backups"))))
+;;disable backups
 (setq make-backup-files nil)
 
 ;; mew -- mail
@@ -389,7 +389,7 @@ choices)
       'mew-send-hook))
 
 ;;highlight symbol
-;(add-to-list 'load-path "~/.emacs.d/lisp/highlight-symbol")
+;;(add-to-list 'load-path "~/.emacs.d/lisp/highlight-symbol")
 (require 'highlight-symbol)
 (global-set-key [f11] 'highlight-symbol-at-point)
 (global-set-key [(control f11)] 'highlight-symbol-next)
@@ -398,14 +398,14 @@ choices)
 
 
 ;;FUN Functions---------------------------------------------------------
-										; w3m web browser
-										;(setq browse-url-browser-function 'w3m-browse-url)
-										;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
-;;; optional keyboard short-cut
-										;(global-set-key "\C-xm" 'browse-url)
-										;(setq w3m-use-cookies t)
+;; w3m web browser
+;;(setq browse-url-browser-function 'w3m-browse-url)
+;;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;; optional keyboard short-cut
+;;(global-set-key "\C-xm" 'browse-url)
+;;(setq w3m-use-cookies t)
 
-										;weibo
+;;weibo
 (add-to-list 'load-path "~/.emacs.d/lisp/weibo")
 (require 'weibo)
 ;;end--------------------------------------------------------------------
@@ -423,11 +423,11 @@ choices)
 (require 'ox-html)
 (require 'ox-latex)
 (require 'ox-ascii)
-;(setq org-ditaa-jar-path "~/usr/bin/ditaa")
+;;(setq org-ditaa-jar-path "~/usr/bin/ditaa")
 (setq org-plantuml-jar-path "~/java/plantuml.jar")
 (add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
 
-; Make babel results blocks lowercase
+;; Make babel results blocks lowercase
 (setq org-babel-results-keyword "results")
 
 (defun bh/display-inline-images ()
@@ -451,12 +451,12 @@ choices)
          (plantuml . t)
          (latex . t))))
 
-; Do not prompt to confirm evaluation
-; This may be dangerous - make sure you understand the consequences
-; of setting this -- see the docstring for details
+;; Do not prompt to confirm evaluation
+;; This may be dangerous - make sure you understand the consequences
+;; of setting this -- see the docstring for details
 (setq org-confirm-babel-evaluate nil)
 
-; Use fundamental mode when editing plantuml blocks with C-c '
+;; Use fundamental mode when editing plantuml blocks with C-c '
 (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
 
 ;; Don't enable this because it breaks access to emacs from my Android phone
@@ -472,9 +472,9 @@ choices)
 (setq TeX-output-view-style (quote (("^pdf$" "." "evince %o %(outpage)"))))
 
 (add-hook 'LaTeX-mode-hook
-(lambda()
-(add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
-(setq TeX-command-default "XeLaTeX")))
+          (lambda()
+            (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+            (setq TeX-command-default "XeLaTeX")))
 
 ;; ace jump mode major function
 (autoload
@@ -502,7 +502,7 @@ choices)
 
 ;;markdown
 (autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -533,8 +533,17 @@ choices)
           (add-to-list 'Info-directory-list "~/.emacs.d/lisp/magit/")))
 (require 'magit)
 
-;;go mode
+;; go mode
 (add-to-list 'load-path "~/.emacs.d/lisp/go")
 (require 'go-mode-load)
 (require 'auto-complete-config)
 (require 'go-autocomplete)
+
+;; format whole
+(load "yformat")
+(require 'yformat)
+
+;; wrapper for open recentf
+(load "recentf-wrapper")
+(require 'recentf-wrapper)
+(global-set-key (kbd "C-x 4 C-r") 'open-recentf-in-new-window)
