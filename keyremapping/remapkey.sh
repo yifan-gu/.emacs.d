@@ -16,4 +16,3 @@ xmodmap -e "add Lock = Caps_Lock"
 xmodmap -e "add Control = Control_L"
 xmodmap -e "keycode 37 = Caps_Lock"
 xmodmap -e "keycode 66 = Control_L"
-

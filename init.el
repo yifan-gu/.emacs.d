@@ -62,8 +62,8 @@
 
 ; indent
 (setq-default indent-tabs-mode nil)
-(setq c-default-style "linux"
-      c-basic-offset 4)
+(setq c-default-style "linux")
+;      c-basic-offset 4)
 
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
