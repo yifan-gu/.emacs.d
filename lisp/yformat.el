@@ -6,7 +6,8 @@
 ;; Have fun!
 
 ;; TODO:
-;; blank line
+;; blank line / finished
+;; duplicate white space
 ;; white space after comma,
 ;; white space before/after =,
 ;; white space before/after operators,
@@ -22,6 +23,10 @@
   (beginning-of-buffer)
   (replace-regexp "[\s]+\n" "\n")
 
+  ;; delete duplicate blank lines
+  (beginning-of-buffer)
+  (replace-regexp "\n\n[\n]+" "\n\n")
+
   ;; indent
   (indent-region (point-min) (point-max) nil)
 
@@ -32,7 +37,6 @@
       (progn
         (delete-region (point) (point-max))
         (insert "\n")))
-
 
   ;; move back
   (goto-char origin)
