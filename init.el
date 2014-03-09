@@ -30,11 +30,15 @@
 ;; no menu bar
 ;;(menu-bar-mode nil)
 ;; no tool bar
-(tool-bar-mode nil)
+;;(tool-bar-mode nil)
 ;; no scroll bar
-(set-scroll-bar-mode nil)
+;;(set-scroll-bar-mode nil)
 ;;no blink cursor
-(blink-cursor-mode)
+
+(set-scroll-bar-mode nil)
+(tool-bar-mode -1)
+(blink-cursor-mode 0)
+
 ;;(auto-image-file-mode t);;image mode
 (show-paren-mode t);;
 (setq mouse-yank-at-point t);; yank with middle key
@@ -140,7 +144,6 @@
           (semantic-add-system-include dir 'c-mode))
         include-dirs))
 
-
 ;;(global-semantic-idle-completions-mode)
 ;;
 ;;set tramp default method
@@ -155,6 +158,8 @@
   "Sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "nTransparency Value 0 - 100 opaque:")
   (set-frame-parameter (selected-frame) 'alpha value))
+
+(set-frame-parameter (selected-frame) 'alpha 80)
 
 ;;buffer-move: swap windows
 (require 'buffer-move)
@@ -346,7 +351,6 @@
 (set-face-attribute 'web-mode-html-attr-name-face nil :foreground "tomato")
 ;;(set-face-attribute 'web-mode-html-attr-value-face nil :foreground "8ae234")
 
-
 (defun web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 2)
@@ -398,8 +402,6 @@
 (global-set-key [f11] 'highlight-symbol-at-point)
 (global-set-key [(control f11)] 'highlight-symbol-next)
 (global-set-key [(meta f11)] 'highlight-symbol-prev)
-
-
 
 ;;FUN Functions---------------------------------------------------------
 ;; w3m web browser
@@ -551,3 +553,8 @@
 (load "recentf-wrapper")
 (require 'recentf-wrapper)
 (global-set-key (kbd "C-x 4 C-r") 'open-recentf-in-new-window)
+
+;; add package PPAs
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
