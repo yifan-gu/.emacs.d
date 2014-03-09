@@ -5,9 +5,17 @@
 ;; set username and mail address
 (setq user-full-name "Yifan Gu")
 (setq user-mail-address "guyifan1121@gmail.com")
-(defconst my-company "vobile")
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+
+;; Set transparency of emacs
+(defun transparency (value)
+  "Sets the transparency of the frame window. 0=transparent/100=opaque"
+  (interactive "nTransparency Value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
+
+(set-frame-parameter (selected-frame) 'alpha 80)
+
 ;; (load-theme 'solarized-dark)
 ;; not to show GNU startup
 ;; (setq inhibit-startup-message t)
@@ -152,14 +160,6 @@
 ;;bash-complete
 (require 'bash-completion)
 (bash-completion-setup)
-
-;; Set transparency of emacs
-(defun transparency (value)
-  "Sets the transparency of the frame window. 0=transparent/100=opaque"
-  (interactive "nTransparency Value 0 - 100 opaque:")
-  (set-frame-parameter (selected-frame) 'alpha value))
-
-(set-frame-parameter (selected-frame) 'alpha 80)
 
 ;;buffer-move: swap windows
 (require 'buffer-move)
