@@ -69,6 +69,10 @@
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
+(require 'google-c-style)
+(add-hook 'c++-mode-hook 'google-set-c-style)
+(add-hook 'c++-mode-hook 'google-make-newline-indent)
+
 ;;python autoindent
 ;;(add-hook 'python-mode-hook '(lambda ()
 ;;							   (local-set-key (kbd "RET") 'newline-and-indent)))
