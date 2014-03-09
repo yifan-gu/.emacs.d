@@ -3,7 +3,7 @@
 ;; Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012 Eric M. Ludlam
 
 ;; Author: yifan <yifan@yifan-laptop>
-;; Created: 2013-04-29 02:19:58+0800
+;; Created: 2014-03-09 00:49:41-0500
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 
