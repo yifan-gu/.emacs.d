@@ -13,6 +13,14 @@
 ;; white space before/after operators,
 ;; white space before/after {},
 
+(defun double-blank-line-between-braces ()
+  "make two blank lines between classes, structs, etc"
+  (beginning-of-buffer)
+  (replace-regexp "}\n\n" "}\n\n\n")
+  (beginning-of-buffer)
+  (replace-regexp "};\n\n" "};\n\n\n")
+  )
+
 (defun fmt ()
   "format the text"
   (interactive)
@@ -26,6 +34,10 @@
   ;; delete duplicate blank lines
   (beginning-of-buffer)
   (replace-regexp "\n\n[\n]+" "\n\n")
+  (if (equal major-mode 'c++-mode)
+      ;; two lines outside of classes (for mesos)
+      (double-blank-line-between-braces)
+    )
 
   ;; indent
   (indent-region (point-min) (point-max) nil)
