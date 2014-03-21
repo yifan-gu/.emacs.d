@@ -1,7 +1,6 @@
-;; A simple format function, inspired by gofmt
+;; A simple formatting plugin, inspired by gofmt
 ;;
 ;; By Yifan Gu, Feb. 8, 2014
-;; All copyright reserved
 ;;
 ;; Have fun!
 
@@ -11,15 +10,46 @@
 ;; white space after comma,
 ;; white space before/after =,
 ;; white space before/after operators,
-;; white space before/after {},
 
-(defun double-blank-line-between-braces ()
-  "make two blank lines between classes, structs, etc"
+(defun replace-part-regexp-with-string (regexp string substart subend)
+  (goto-char (point-min))
+  ;; TODO: igore eof, throw other errors
+  (ignore-errors
+    (while (search-forward-regexp regexp)
+      (setq end (point))
+      (search-backward-regexp regexp)
+      (setq start (point))
+      (replace-regexp (substring regexp substart subend) string nil start end))))
+
+(defun delete-blank-lines-around-braces ()
+  "delete blank lines before or after `{}`"
   (beginning-of-buffer)
-  (replace-regexp "}\n\n" "}\n\n\n")
+  (replace-regexp "{\n[\n]+" "{\n")
+  (replace-regexp "\n[\n]+}" "\n}"))
+
+(defun normal-mode-handle-blank-lines ()
   (beginning-of-buffer)
-  (replace-regexp "};\n\n" "};\n\n\n")
-  )
+  (replace-regexp "\n\n[\n]+" "\n\n")
+
+  ;; add one line after `}` or `};` if there is no lines
+  (replace-part-regexp-with-string "}\n[^\n^\s]" "}\n\n" 0 -6)
+  (replace-part-regexp-with-string "};\n[^\n^\s]" "};\n\n" 0 -6)
+
+  (delete-blank-lines-around-braces))
+
+(defun c++-mode-handle-blank-lines ()
+  ;; squash multiple blank lines to two blank lines
+  (beginning-of-buffer)
+  (replace-regexp "\n\n\n[\n]+" "\n\n\n")
+
+  ;; squash multiple blank lines within a block (within `{}` into one line
+  (replace-part-regexp-with-string "\n\n[\n]+[\s]" "\n\n" 0 -3)
+  ;;
+  ;;;; add two lines after `}` or `};` when there is only zero or one line.
+  (replace-part-regexp-with-string "}\n[\n]?[^\n^\s]" "}\n\n\n" 0 -6)
+  (replace-part-regexp-with-string "};\n[\n]?[^\n^\s]" "};\n\n\n" 0 -6)
+
+  (delete-blank-lines-around-braces))
 
 (defun fmt ()
   "format the text"
@@ -32,12 +62,10 @@
   (replace-regexp "[\s]+\n" "\n")
 
   ;; delete duplicate blank lines
-  (beginning-of-buffer)
-  (replace-regexp "\n\n[\n]+" "\n\n")
   (if (equal major-mode 'c++-mode)
       ;; two lines outside of classes (for mesos)
-      (double-blank-line-between-braces)
-    )
+      (c++-mode-handle-blank-lines)
+    (normal-mode-handle-blank-lines))
 
   ;; indent
   (indent-region (point-min) (point-max) nil)
