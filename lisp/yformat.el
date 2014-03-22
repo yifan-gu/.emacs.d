@@ -46,10 +46,12 @@
   (replace-part-regexp-with-string "\n\n[\n]+[\s]" "\n\n" 0 -3)
   ;;
   ;;;; add two lines after `}` or `};` when there is only zero or one line.
-  (replace-part-regexp-with-string "}\n[\n]?[^\n^\s]" "}\n\n\n" 0 -6)
-  (replace-part-regexp-with-string "};\n[\n]?[^\n^\s]" "};\n\n\n" 0 -6)
+  (replace-part-regexp-with-string "}\n[\n]?[^\n^\s^}]" "}\n\n\n" 0 -8)
+  (replace-part-regexp-with-string "};\n[\n]?[^\n^\s^}]" "};\n\n\n" 0 -8)
 
-  (delete-blank-lines-around-braces))
+  ;; delete blank lines before `}`
+  (beginning-of-buffer)
+  (replace-regexp "\n[\n]+}" "\n}"))
 
 (defun fmt ()
   "format the text"
