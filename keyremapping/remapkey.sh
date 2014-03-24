@@ -4,8 +4,8 @@
 
 # remap `\' to BackSpace
 # remap BackSpace to `\'
-xmodmap -e "keycode 51 = BackSpace" 
-xmodmap -e "keycode 22 = backslash" 
+xmodmap -e "keycode 51 = BackSpace BackSpace BackSpace BackSpace" 
+xmodmap -e "keycode 22 = backslash bar backslash bar" 
 
 # remap Caps_Lock to Control_L
 # remap Control_L to Caps_Lock

@@ -583,7 +583,7 @@
           '(lambda()
              (font-lock-add-keywords
               nil '(;; complete some fundamental keywords
-                    ("\\<\\(void\\|unsigned\\|signed\\|char\\|short\\|bool\\|int\\|long\\|float\\|double\\)\\>" . font-lock-keyword-face)
+                    ("\\<\\(void\\|unsigned\\|signed\\|char\\|short\\|bool\\|int\\|long\\|float\\|double\\)\\>" . font-lock-type-face)
                     ;; add the new C++11 keywords
                     ("\\<\\(alignof\\|alignas\\|constexpr\\|decltype\\|noexcept\\|nullptr\\|static_assert\\|thread_local\\|override\\|final\\)\\>" . font-lock-keyword-face)
                     ("\\<\\(char[0-9]+_t\\)\\>" . font-lock-keyword-face)
