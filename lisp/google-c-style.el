@@ -120,7 +120,7 @@ Suitable for inclusion in `c-offsets-alist'."
                              'c-no-indent-after-java-annotations)
                           ,(when (fboundp 'c-lineup-assignments)
                              'c-lineup-assignments)
-                          ++))
+                          +)) ;; for mesos
                         (label . /)
                         (case-label . +)
                         (statement-case-open . +)
