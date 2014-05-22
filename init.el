@@ -266,6 +266,8 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
+(ac-set-trigger-key "TAB")
+(setq ac-auto-start nil)
 
 ;;python autocompletion using jedi.el
 (add-to-list 'load-path "~/.emacs.d/lisp/emacs-ctable")
@@ -545,6 +547,10 @@
 (require 'go-mode-load)
 (require 'auto-complete-config)
 (require 'go-autocomplete)
+
+;; golint
+(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
+(require 'golint)
 
 ;; format whole
 (load "yformat")
