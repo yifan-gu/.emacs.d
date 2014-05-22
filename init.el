@@ -137,7 +137,7 @@
 
 ;; (setq semanticdb-project-roots (list (expand-file-name "/")))
 (defconst cedet-user-include-dirs
-  (list "." ".." "./include" "../include" "../inc" "../common" "../public"
+  (list "./" "../" "./include" "../include" "../inc" "../common" "../public"
         "../.." "../../include" "../../inc" "../../common" "../../public"
         "~/github/3rdparty/stout/include" "~/github/3rdparty/libprocess/include"))
 (defconst cedet-win32-include-dirs
@@ -194,8 +194,8 @@
 ;;default vector:["black" "red" "green" "yellow" "blue" "magenta" "cyan" "white"]
 ;;
 ;;ibus for chinese input
-(require 'ibus)
-(add-hook 'after-init-hook 'ibus-mode-on)
+;;(require 'ibus)
+;;(add-hook 'after-init-hook 'ibus-mode-on)
 
 ;; Behave like vi's o command
 (defun open-next-line (arg)
