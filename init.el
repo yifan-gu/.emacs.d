@@ -139,7 +139,7 @@
 (defconst cedet-user-include-dirs
   (list "./" "../" "./include" "../include" "../inc" "../common" "../public"
         "../.." "../../include" "../../inc" "../../common" "../../public"
-        "~/github/3rdparty/stout/include" "~/github/3rdparty/libprocess/include"))
+        "~/apache/mesos/3rdparty/stout/include" "~/apache/mesos/3rdparty/libprocess/include"))
 (defconst cedet-win32-include-dirs
   (list "/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include"
         "/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include/c++/"
