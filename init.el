@@ -229,6 +229,7 @@
 ;;compile keybinding
 (global-set-key (kbd "C-c l") 'compile)
 (add-to-list 'load-path "~/.emacs.d/lisp/yasnippet-0.6.1c")
+(add-to-list 'load-path "~/.emacs.d/elpa/popup-20150116.1223")
 (require 'popup)
 (require 'yasnippet)
 ;;(yas-global-mode 1)
@@ -236,6 +237,7 @@
 (yas/load-directory "~/.emacs.d/lisp/yasnippet-0.6.1c/snippets")
 (setq yas/trigger-key (kbd "M-["))
 ;; add some shotcuts in popup menu mode
+
 (define-key popup-menu-keymap (kbd "M-n") 'popup-next)
 (define-key popup-menu-keymap (kbd "TAB") 'popup-next)
 (define-key popup-menu-keymap (kbd "<tab>") 'popup-next)
@@ -262,18 +264,18 @@
 ;;-----------------------------------------------------------------------------------
 
 ;;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
-(add-to-list 'load-path "~/.emacs.d/lisp/auto-complete-1.3.1")
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20150201.150")
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete-1.3.1/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20150201.150/dict")
 (ac-config-default)
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
 
-;;python autocompletion using jedi.el
-(add-to-list 'load-path "~/.emacs.d/lisp/emacs-ctable")
-(add-to-list 'load-path "~/.emacs.d/lisp/emacs-deferred")
-(add-to-list 'load-path "~/.emacs.d/lisp/emacs-epc")
-(add-to-list 'load-path "~/.emacs.d/lisp/emacs-jedi")
+;;;;python autocompletion using jedi.el
+;;(add-to-list 'load-path "~/.emacs.d/lisp/emacs-ctable")
+;;(add-to-list 'load-path "~/.emacs.d/lisp/emacs-deferred")
+;;(add-to-list 'load-path "~/.emacs.d/lisp/emacs-epc")
+;;(add-to-list 'load-path "~/.emacs.d/lisp/emacs-jedi")
 (autoload 'jedi:setup "jedi" nil t)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)
@@ -519,12 +521,6 @@
 ;;indent for js
 (setq js-indent-level 2)
 
-;;julia mode
-(require 'julia-mode)
-
-;;protobuf mode
-(require 'protobuf-mode)
-
 ;;ack-grep
 (require 'ack-and-a-half)
 ;; Create shorter aliases
@@ -547,10 +543,6 @@
 (require 'go-mode-load)
 (require 'auto-complete-config)
 (require 'go-autocomplete)
-
-;; golint
-(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
-(require 'golint)
 
 ;; format whole
 (load "yformat")
