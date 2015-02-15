@@ -544,6 +544,11 @@
 (require 'auto-complete-config)
 (require 'go-autocomplete)
 
+;; goimports
+(setq gofmt-command "goimports")
+(require 'go-mode-load)
+(add-hook 'before-save-hook 'gofmt-before-save)
+
 ;; format whole
 (load "yformat")
 (require 'yformat)
