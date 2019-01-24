@@ -387,7 +387,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
+    (company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -413,3 +413,52 @@
 (add-to-list 'load-path "~/.emacs.d/elpajsonnet-mode-20180822.1619")
 (autoload 'jsonnet-mode "jsonnet-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.jsonnet\\'" . jsonnet-mode))
+
+;; csharp-mode.
+
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+
+(eval-after-load
+  'company
+  '(add-to-list 'company-backends 'company-omnisharp))
+
+;; Only auto-complete if the predecessor char is a dot or alphanumeric.
+(defun my-omnisharp-auto-complete ()
+  (interactive)
+  (if (string-match "[\.\\|[:alnum:]]" (string (preceding-char)))
+      (omnisharp-auto-complete)
+    (indent-for-tab-command)))
+
+(defun my-csharp-mode-setup ()
+  (turn-on-font-lock)
+  (turn-on-auto-revert-mode)(insert )
+  (setq c-basic-offset 4)
+
+  (omnisharp-mode)
+  (company-mode)
+
+  (setq indent-tabs-mode nil)
+  (setq c-syntactic-indentation t)
+  (c-set-style "ellemtel")
+  (setq c-basic-offset 4)
+  (setq truncate-lines t)
+  (setq tab-width 4)
+  (setq evil-shift-width 4)
+
+  (local-set-key (kbd "<tab>") 'my-omnisharp-auto-complete)
+  (local-set-key (kbd "C-c C-j") 'omnisharp-go-to-definition)
+  (local-set-key (kbd "C-x 4 C-c C-j") 'omnisharp-go-to-definition-other-window)
+  ;;(local-set-key (kbd "C-x-s") 'omnisharp-code-format-entire-file)
+  (defalias 'fmt 'omnisharp-code-format-entire-file)
+  )
+
+  ;csharp-mode README.md recommends this too
+  ;(electric-pair-mode 1)       ;; Emacs 24
+  ;(electric-pair-local-mode 1) ;; Emacs 25
+
+  ;;(local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+  ;;(local-set-key (kbd "C-c C-c") 'recompile))
+
+(add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
