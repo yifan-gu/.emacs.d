@@ -387,7 +387,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
+    (php-mode terraform-mode lua-mode company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -412,7 +412,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/elpajsonnet-mode-20180822.1619")
 (autoload 'jsonnet-mode "jsonnet-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.jsonnet\\'" . jsonnet-mode))
+(add-to-list 'auto-mode-alist '("\\.sonnet\\'" . jsonnet-mode))
 
 ;; csharp-mode.
 
@@ -462,3 +462,7 @@
   ;;(local-set-key (kbd "C-c C-c") 'recompile))
 
 (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
+
+; Turn off the bell.
+(setq ring-bell-function 'ignore)
+
