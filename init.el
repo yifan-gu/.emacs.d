@@ -255,9 +255,9 @@
 ;;highlight symbol
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/highlight-symbol")
 (require 'highlight-symbol)
-(global-set-key [f11] 'highlight-symbol-at-point)
-(global-set-key [(control f11)] 'highlight-symbol-next)
-(global-set-key [(meta f11)] 'highlight-symbol-prev)
+(global-set-key [f9] 'highlight-symbol-at-point)
+(global-set-key [(control f9)] 'highlight-symbol-next)
+(global-set-key [(meta f9)] 'highlight-symbol-prev)
 
 ;; ace jump mode major function
 (autoload
