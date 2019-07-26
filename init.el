@@ -117,10 +117,10 @@
 (global-set-key (kbd "<M-S-left>")   'buf-move-left)
 (global-set-key (kbd "<M-S-right>")  'buf-move-right)
 ;;bind window move key
-(global-set-key (kbd "<S-up>") 'windmove-up)
-(global-set-key (kbd "<S-down>") 'windmove-down)
-(global-set-key (kbd "<S-right>") 'windmove-right)
-(global-set-key (kbd "<S-left>") 'windmove-left)
+(global-set-key (kbd "<M-up>") 'windmove-up)
+(global-set-key (kbd "<M-down>") 'windmove-down)
+(global-set-key (kbd "<M-right>") 'windmove-right)
+(global-set-key (kbd "<M-left>") 'windmove-left)
 
 
 (setq ansi-color-names-vector
@@ -387,7 +387,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (php-mode terraform-mode lua-mode company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
+    (groovy-mode jenkins php-mode terraform-mode lua-mode company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
