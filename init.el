@@ -73,8 +73,9 @@
 ;; full screen
 ;;(set-frame-parameter nil 'fullscreen 'fullboth)
 
-;;; automatically set the height
-(set-frame-size (selected-frame) 166 90)
+;; automatically set the height
+(set-frame-size (selected-frame) 172 45)
+;;(setq default-frame-alist '((fullscreen . fullheight)))
 
 ;;color theme
 (add-to-list 'load-path "~/.emacs.d/lisp/color-theme-6.6.0")
@@ -84,8 +85,8 @@
           (color-theme-tangotango)
           ))
 ;;font
-;;(set-default-font "Monospace-16")
-(set-default-font "Monaco-16")
+;;(set-frame-font "Monospace-16")
+(set-frame-font "Monaco-16")
 ;;(set-face-attribute 'default nil :family "Monaco" :height 160 :weight 'normal)
 
 
@@ -387,7 +388,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (groovy-mode jenkins php-mode terraform-mode lua-mode company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
+    (php-auto-yasnippets groovy-mode jenkins php-mode terraform-mode lua-mode company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -465,4 +466,3 @@
 
 ; Turn off the bell.
 (setq ring-bell-function 'ignore)
-
