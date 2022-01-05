@@ -44,8 +44,12 @@ Emacs(24.3.1) Configuration
 
 * go-mode
 
-  Install [gocode](https://github.com/nsf/gocode), make sure to put it into $GOROOT/bin
-  * goimports and others:
+  go get
   ```shell
-  $ sudo apt-get install golang-go.tools
+  $ go get -u golang.org/x/tools/cmd/...
+  $ go get -u github.com/rogpeppe/godef/...
+  $ go get -u github.com/mdempsky/gocode
+  $ go get -u golang.org/x/tools/cmd/goimports
+  $ go get -u golang.org/x/tools/cmd/guru
+  $ go get -u github.com/dougm/goflymake
   ```
