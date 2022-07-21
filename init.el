@@ -9,8 +9,11 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
 ;; Set transparency of emacs
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 85))
@@ -330,9 +333,9 @@
 (global-set-key (kbd "C-x 4 C-r") 'open-recentf-in-new-window)
 
 ;; add package PPAs
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")))
+;;                       ("gnu" . "http://elpa.gnu.org/packages/")
+;;                       ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 ;; for c++11 standard
 (require 'font-lock)
@@ -387,8 +390,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (php-auto-yasnippets groovy-mode jenkins php-mode terraform-mode lua-mode company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst))))
+   '(solidity-mode php-auto-yasnippets groovy-mode jenkins php-mode terraform-mode lua-mode company omnisharp editorconfig csharp-mode ack-and-a-half jsonnet-mode go-mode yasnippet-snippets yasnippet shell-command rust-mode protobuf-mode popup julia-mode jedi golint go-autocomplete flx-ido exec-path-from-shell dash auto-complete-rst)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

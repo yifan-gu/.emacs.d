@@ -1,4 +1,4 @@
-Emacs(24.3.1) Configuration
+(deprecated, use doom) Emacs(24.3.1) Configuration
 ===========
 
 ###required packages
